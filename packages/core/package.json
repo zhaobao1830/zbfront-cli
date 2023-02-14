@@ -1,6 +1,6 @@
 {
   "name": "@zbfront-cli/core",
-  "version": "1.0.4",
+  "version": "1.0.1",
   "description": "zbfront-cli core",
   "author": "zhaobao1830 <373098777@qq.com>",
   "homepage": "",
@@ -19,5 +19,8 @@
   "scripts": {
     "test": "node ./__tests__/core.test.js"
   },
-  "gitHead": "ca8ae56a02bdead689d881b375dbd2ea10d866e8"
+  "gitHead": "2e6db8f4734679d88f66dde5020613049bdbbdcb",
+  "publishConfig": {
+    "access": "public"
+  }
 }
