@@ -5,6 +5,9 @@
   "author": "zhaobao1830 <373098777@qq.com>",
   "homepage": "",
   "license": "ISC",
+  "bin": {
+    "zbfront-cli": "bin/index.js"
+  },
   "main": "lib/core.js",
   "directories": {
     "lib": "lib",
