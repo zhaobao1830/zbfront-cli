@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "zbfront cli 脚手架",
   "main": "index.js",
+  "bin": {
+    "zbfront-cli": "packages/core/bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +16,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^6.4.1"
+    "lerna": "^6.5.1"
+  },
+  "dependencies": {
+    "download-git-repo": "^3.0.2",
+    "handlebars": "^4.7.7"
   }
 }
