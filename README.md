@@ -16,9 +16,7 @@ npm install zbfront-cli -g
 zbfront-cli init my-project
 ```
 
-::: tip 备注
 my-project是自定义的项目名称
-:::
 
 ### 3、选择想要下载的项目模板
 

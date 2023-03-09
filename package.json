@@ -1,6 +1,6 @@
 {
   "name": "zbfront-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "zbfront cli 脚手架",
   "main": "index.js",
   "bin": {
@@ -8,6 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zhaobao1830/zbfront-cli.git"
   },
   "keywords": [],
   "author": "",
