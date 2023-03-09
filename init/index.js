@@ -82,8 +82,8 @@ class InitCommand {
 		})
 		const template_vite_mobile = 'https://github.com:zhaobao1830/vite-mobile-zb#master';
 		const template_vite_pc = 'https://github.com:zhaobao1830/vite-pc-zb#master';
-		const template_vue_cli_mobile = 'https://github.com:zhaobao1830/vueclimobilezb#master';
-		const template_vue_cli_pc = 'https://github.com:zhaobao1830/vueclipczb#master';
+		const template_vue_cli_mobile = 'https://github.com:zhaobao1830/vue-cli-mobile-zb#master';
+		const template_vue_cli_pc = 'https://github.com:zhaobao1830/vue-cli-pc-zb#master';
 		let TEMPLATE = ''
 		if (type === 'vite_mobile') {
 			TEMPLATE = template_vite_mobile
