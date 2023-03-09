@@ -23,9 +23,8 @@ class InitCommand {
 		const localPath = process.cwd();
 		// 1、判断当前目录是否为空
 		if (!this.ifDirEmpty(localPath)) {
-			let ifContinue = false;
 			// 询问是否继续创建
-			ifContinue = (await inquirer.prompt({
+			let ifContinue = (await inquirer.prompt({
 				type: 'confirm',
 				name: 'ifContinue',
 				default: false,
@@ -100,7 +99,7 @@ class InitCommand {
 			download(TEMPLATE, this._argv, { clone: true }, (err) => {
 				spinner.stop(true);
 				if (err) {
-					throw new Error('下载项目模板失败，请重新下载！');
+					log.error('下载项目模板失败，请重新下载！');
 				} else {
 					const fileName = `${this._argv}/package.json`;
 					const meta = {
