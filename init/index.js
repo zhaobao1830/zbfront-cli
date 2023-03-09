@@ -7,6 +7,8 @@ const download = require('download-git-repo');
 const log = require('../log');
 const { spinnerStart } = require('../utils');
 
+const TYPE_VITE_MOBILE = 'vite_mobile'
+const TYPE_VITE_PC = 'vite_pc'
 const TYPE_VUE_CLI_MOBILE = 'vue_cli_mobile'
 const TYPE_VUE_CLI_PC = 'vue_cli_pc'
 
@@ -58,8 +60,16 @@ class InitCommand {
 			type: 'list',
 			name: 'type',
 			message: '请选择项目类型',
-			default: TYPE_VUE_CLI_MOBILE,
+			default: TYPE_VITE_MOBILE,
 			choices: [
+				{
+					name: 'vite 移动端项目',
+					value: TYPE_VITE_MOBILE
+				},
+				{
+					name: 'vite 中后台项目',
+					value: TYPE_VITE_PC
+				},
 				{
 				  name: 'vue cli 移动端项目',
 				  value: TYPE_VUE_CLI_MOBILE,
@@ -70,10 +80,16 @@ class InitCommand {
 			  }
 			]
 		})
+		const template_vite_mobile = 'https://github.com:zhaobao1830/vite-mobile-zb#master';
+		const template_vite_pc = 'https://github.com:zhaobao1830/vite-pc-zb#master';
 		const template_vue_cli_mobile = 'https://github.com:zhaobao1830/vueclimobilezb#master';
 		const template_vue_cli_pc = 'https://github.com:zhaobao1830/vueclipczb#master';
 		let TEMPLATE = ''
-		if (type === 'vue_cli_mobile') {
+		if (type === 'vite_mobile') {
+			TEMPLATE = template_vite_mobile
+		} else if (type === 'vite_pc') {
+			TEMPLATE = template_vite_pc
+		} else if (type === 'vue_cli_mobile') {
 			TEMPLATE = template_vue_cli_mobile
 		} else if (type === 'vue_cli_pc') {
 			TEMPLATE = template_vue_cli_pc
