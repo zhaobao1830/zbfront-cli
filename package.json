@@ -1,6 +1,6 @@
 {
   "name": "zbfront-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "zbfront cli 脚手架",
   "main": "index.js",
   "bin": {
