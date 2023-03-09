@@ -4,7 +4,8 @@ const fs = require("fs");
 const inquirer = require('inquirer');
 const fse = require('fs-extra');
 const download = require('download-git-repo');
-const handlebars = require('handlebars');
+const log = require('../log');
+const { spinnerStart } = require('../utils');
 
 const TYPE_VUE_CLI_MOBILE = 'vue_cli_mobile'
 const TYPE_VUE_CLI_PC = 'vue_cli_pc'
@@ -95,11 +96,11 @@ class InitCommand {
 			}
 		])
     if (project) {
+			let spinner = spinnerStart('正在下载项目模板...');
 			download(TEMPLATE, this._argv, { clone: true }, (err) => {
-				console.log(project)
+				spinner.stop(true);
 				if (err) {
-					console.log(err)
-					console.log(err ? 'Error' : 'Success')
+					throw new Error('下载项目模板失败，请重新下载！');
 				} else {
 					const fileName = `${this._argv}/package.json`;
 					const meta = {
@@ -108,11 +109,14 @@ class InitCommand {
 						description: project.description,
 					}
 					if(fs.existsSync(fileName)){
-						const content = JSON.parse(fs.readFileSync(fileName));
+						const content = fse.readJsonSync(fileName);
 						const result = {...content, ...meta};
-						fs.writeFileSync(fileName, JSON.stringify(result));
+						fse.writeJSONSync(fileName, result, {
+							spaces: 2,
+							EOL: '\r\n'
+						});
 					}
-					console.log('下载成功')
+					log.success('项目模板下载成功！');
 				}
 			})
 		}

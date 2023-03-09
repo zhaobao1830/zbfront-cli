@@ -2,9 +2,9 @@
 
 // commander注册命令
 const commander = require('commander');
-const pkg = require('../package.json')
+const pkg = require('../../package.json')
 
-const init = require('../../init/lib');
+const init = require('../../init');
 
 // 手动实例化一个command实例
 const program = new commander.Command();
