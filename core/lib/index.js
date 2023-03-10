@@ -16,7 +16,10 @@ function core() {
 		.version(pkg.version)
 		.option('-d, --debug', '是否开启调试模式', false)
 
-	// 子类定义
+	/**
+	 * 注册init指令，执行init方法
+	 * @param projectName 项目名称
+	 */
 	program
 		.command('init [projectName]')
 		.action(init);

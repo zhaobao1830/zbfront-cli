@@ -1,8 +1,12 @@
 'use strict';
 
 const fs = require("fs");
-const inquirer = require('inquirer');
 const fse = require('fs-extra');
+// 交互式命令行包
+const inquirer = require('inquirer');
+// 校验版本号
+const semver = require('semver');
+// 下载Git仓库的代码
 const download = require('download-git-repo');
 const log = require('../log');
 const { spinnerStart } = require('../utils');
@@ -22,6 +26,7 @@ class InitCommand {
 	}
 
   async init() {
+		// 获取当前执行的目录
 		const localPath = process.cwd();
 		// 1、判断当前目录是否为空
 		if (!this.ifDirEmpty(localPath)) {
@@ -102,12 +107,29 @@ class InitCommand {
 				name: 'version',
 				message: `请输入项目版本号`,
 				default: '1.0.0',
+				validate: function(v) {
+					const done = this.async();
+					setTimeout(function() {
+						if (!(!!semver.valid(v))) {
+							done('请输入合法的版本号');
+							return;
+						}
+						done(null, true);
+					}, 0);
+				},
+				filter: function(v) {
+					if (!!semver.valid(v)) {
+						return semver.valid(v);
+					} else {
+						return v;
+					}
+				}
 			},
 			{
 				type: 'input',
 				name: 'description',
 				message: `请输入描述信息`,
-				default: '',
+				default: ''
 			}
 		])
     if (project) {
@@ -145,7 +167,6 @@ class InitCommand {
 		));
 		return !fileList || fileList.length <= 0;
 	}
-
 }
 function init(argv) {
 	return new InitCommand(argv);
